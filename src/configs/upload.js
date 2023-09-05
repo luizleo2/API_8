@@ -14,7 +14,7 @@ const MULTER = {
     //local temporário onde os arquivos serão salvos temporariamente
     destination: TMP_FOLDER,
 
-    filename(req, file, cb) {
+    filename(require, file, callback) {
 
       //uma hash é gerada e convertida em formato hexadecimal
       // gera um hash aleatório pra combinar com a imagem garantindo que o usuário 
@@ -25,7 +25,7 @@ const MULTER = {
       //armazenado na constante fileName
       const fileName = `${fileHash}-${file.originalname}`
 
-      return cb(null, fileName);
+      return callback(null, fileName);
     },
   }),
 };

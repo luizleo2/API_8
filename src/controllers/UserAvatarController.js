@@ -3,12 +3,12 @@ const AppError = require("../utils/AppError");
 const DiskStorage = require("../providers/DiskStorage");
 
 class UserAvatarController {
-  async update(req, res) {
+  async update(require, response) {
     //id do usuário  que deseja atualizar a imagem dele
-    const user_id = req.user.id;
+    const user_id = require.user.id;
 
     //nome do arquivo que o usuário fez upload/novo avatar
-    const avatarFilename = req.file.filename;
+    const avatarFilename = require.file.filename;
 
     //Instanciando o DiskStorage responsável por salvar e/ou deletar as imagens
     const diskStorage = new DiskStorage();
@@ -40,7 +40,7 @@ class UserAvatarController {
 
     await knex("users").update(user).where({ id: user_id });
 
-    return res.json(user);
+    return response.json(user);
   }
 }
 
